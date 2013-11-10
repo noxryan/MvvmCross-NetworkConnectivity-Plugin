@@ -12,18 +12,21 @@ namespace NetworkConnectivity.Droid
     {
         public NetworkConnectivity()
         {
-            var obj = new NetworkConnectivity();
+
         }
         public ConnectivityManager ConnectionManager
         {
-            get { return _connectionManager(); }
+            get { return _connectionManager; }
         }
-        private ConnectivityManager _connectionManager()
+        private ConnectivityManager _connectionManager
         {
-            var globals = Mvx.Resolve<Cirrious.CrossCore.Droid.IMvxAndroidGlobals>();
-            var connectivityManager = globals.ApplicationContext.GetSystemService(Context.ConnectivityService) as ConnectivityManager;
+            get
+            {
+                var globals = Mvx.Resolve<Cirrious.CrossCore.Droid.IMvxAndroidGlobals>();
+                var connectivityManager = globals.ApplicationContext.GetSystemService(Context.ConnectivityService) as ConnectivityManager;
 
-            return connectivityManager;
+                return connectivityManager;
+            }
         }
         public bool GetConnectionStatus()
         {
