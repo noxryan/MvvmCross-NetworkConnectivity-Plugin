@@ -1,3 +1,4 @@
+using System;
 using Android.App;
 using Android.Content;
 using Android.Net;
@@ -9,7 +10,15 @@ namespace NetworkConnectivity.Droid
 {
     public class NetworkConnectivity : INetworkConnectivity
     {
-        private ConnectivityManager ConnectionManager()
+        public NetworkConnectivity()
+        {
+            var obj = new NetworkConnectivity();
+        }
+        public ConnectivityManager ConnectionManager
+        {
+            get { return _connectionManager(); }
+        }
+        private ConnectivityManager _connectionManager()
         {
             var globals = Mvx.Resolve<Cirrious.CrossCore.Droid.IMvxAndroidGlobals>();
             var connectivityManager = globals.ApplicationContext.GetSystemService(Context.ConnectivityService) as ConnectivityManager;
@@ -19,10 +28,10 @@ namespace NetworkConnectivity.Droid
         public bool GetConnectionStatus()
         {
             bool isConnected = false;
-            bool isAvailable = this.ConnectionManager().ActiveNetworkInfo.IsAvailable;
+            bool isAvailable = ConnectionManager.ActiveNetworkInfo.IsAvailable;
 
             if (isAvailable == true)
-                isConnected = this.ConnectionManager().ActiveNetworkInfo.IsConnected;
+                isConnected = ConnectionManager.ActiveNetworkInfo.IsConnected;
 
             return isConnected;
         }
@@ -30,8 +39,8 @@ namespace NetworkConnectivity.Droid
         {
             string strConnection = "Not Connected";
 
-            if(this.GetConnectionStatus() == true)
-                strConnection = this.ConnectionManager().ActiveNetworkInfo.TypeName;
+            if (this.GetConnectionStatus() == true)
+                strConnection = ConnectionManager.ActiveNetworkInfo.TypeName;
 
             return strConnection;
         }
