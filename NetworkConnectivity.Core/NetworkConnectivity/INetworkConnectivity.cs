@@ -1,4 +1,4 @@
-﻿namespace NetworkConnectivity.NetConnectivity
+﻿namespace NetworkConnectivity.NetworkConnectivity
 {
     public interface INetworkConnectivity
     {

@@ -1,6 +1,6 @@
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Plugins;
-using NetworkConnectivity.NetConnectivity;
+using NetworkConnectivity.NetworkConnectivity;
 
 namespace NetworkConnectivity.Droid
 {
