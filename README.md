@@ -1,4 +1,2 @@
 MvvmCross-NetworkConnectivity
 =============================
-
-fixing git...
