@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Specialized;
 using System.Windows.Input;
-using MonoTouch.UIKit;
+using UIKit;
+using Foundation;
 
 namespace NetworkConnectivity.Touch
 {
@@ -46,7 +47,7 @@ namespace NetworkConnectivity.Touch
         public void Include(UIDatePicker date)
         {
             date.Date = date.Date.AddSeconds(1);
-            date.ValueChanged += (sender, args) => { date.Date = DateTime.MaxValue; };
+			date.ValueChanged += (sender, args) => { date.Date = (NSDate) DateTime.MaxValue; };
         }
 
         public void Include(UISlider slider)
